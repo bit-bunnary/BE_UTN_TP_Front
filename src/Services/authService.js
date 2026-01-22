@@ -1,6 +1,6 @@
 import { ServerError } from "../Utilities/errorUtilities";
 
-const URL_API= 'https://be-utn-tp-back.vercel.app/' /* 'http://localhost:8180' */
+const URL_API= import.meta.env.VITE_API_URL /* 'http://localhost:8180' */
 
 export async function login (email, password) {
     const response_http = await fetch(
