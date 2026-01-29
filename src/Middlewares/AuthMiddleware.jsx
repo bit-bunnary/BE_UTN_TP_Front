@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../Context/authContext";
+import { AuthContext } from "../Context/AuthContext";
 import { Navigate, Outlet } from "react-router";
 
 function AuthMiddleware() {

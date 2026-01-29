@@ -5,12 +5,12 @@ function useRequest() {
     const [response, setResponse] = useState(null)
     const [error, setError] = useState(null)
     
-    async function sendRequest (request) {
+    async function sendRequest (requestCallback) {
         try {
             setLoading(true)
             setResponse(null)
             setError(null)
-            const response = await request()
+            const response = await requestCallback()
             setResponse(response)
         }
         
