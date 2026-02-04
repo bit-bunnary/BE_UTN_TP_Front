@@ -14,14 +14,15 @@ function AuthContextProvider({children}) {
     const [isLogged, setIsLogged] = useState(Boolean(auth_token))
     const [session, setSession] = useState(auth_token ? decodeAuthToken(auth_token) : null)
 
+    /* Este useEffect seria valido si en el futuro tengo el GET /api/auth/validate-token */
     useEffect(
         () => {
-            const auth_token = localStorage.getItem(AUTH_TOKEN_KEY)
+            /* const auth_token = localStorage.getItem(AUTH_TOKEN_KEY)
             if(auth_token){
                 setIsLogged(true)
                 const session_decoded = jwtDecode(auth_token)
                 setSession(session_decoded)
-            }
+            } */
         },
         []
     )

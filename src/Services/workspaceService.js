@@ -18,3 +18,22 @@ export async function getWorkspaceList() {
     }
     return response
 }
+
+export async function createWorkspace(workspace_data) {
+    const response_http = await fetch(
+        URL_API + '/api/workspace',
+        {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('auth_token'),
+            },
+            body: JSON.stringify(workspace_data)
+        }
+    )
+    const response = await response_http.json()
+    if(!response.ok){
+        throw new ServerError(response.message, response.status);
+    }
+    return response
+}
