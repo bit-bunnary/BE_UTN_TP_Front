@@ -1,0 +1,28 @@
+/* ===== VARIABLES GLOBALES ===== */
+:root {
+    --bg: #fff9fb;
+    --card-bg: #ffffff;
+    --text-main: #2d2d2d;
+    --text-soft: #6b7280;
+
+    --primary: #f472b6;
+    --primary-hover: #ec4899;
+
+    --accent: #8b5cf6;
+
+    --border: #e5e7eb;
+}
+
+/* ===== ESTILOS BASE ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    min-height: 100vh;
+}

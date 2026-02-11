@@ -1,127 +1,162 @@
+/* ===== CONTENEDOR GENERAL ===== */
 .create-workspace-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #fceceb; /* A very subtle background */
-    font-family: 'Lato', sans-serif; /* Assuming a common font or system default */
+    min-height: 100vh;
+    padding: 2rem;
+
+    background: linear-gradient(
+        135deg,
+        #fff9fb 0%,
+        #fdf2f8 40%,
+        #f3e8ff 100%
+    );
+
+    font-family: 'Inter', sans-serif;
 }
 
+/* ===== CARD ===== */
 .create-workspace-card {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+
     padding: 3rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 24px;
+
+    box-shadow: 0px 20px 50px rgba(244, 114, 182, 0.18);
+
     width: 100%;
     max-width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+
+    transition: all 0.3s ease;
+}
+
+
+
+/* ===== HEADER ===== */
+.create-workspace-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #f472b6;
+    text-align: center;
+}
+
+.create-workspace-header p {
+    color: #6b7280;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* ===== FORM ===== */
+.workspace-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.create-workspace-header h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1d1c1d;
-    margin-bottom: 0.5rem;
-    text-align: center;
-}
-
-.create-workspace-header p {
-    color: #616061;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.workspace-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .form-label {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #1d1c1d;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #6b7280;
 }
 
+/* ===== INPUTS ===== */
 .form-input,
 .form-textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.2s;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    font-size: 0.95rem;
     outline: none;
     width: 100%;
-    box-sizing: border-box;
+    transition: all 0.25s ease;
+    background-color: white;
 }
 
 .form-input:focus,
 .form-textarea:focus {
-    border-color: #1264a3;
-    box-shadow: 0 0 0 4px rgba(29, 155, 209, 0.1);
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
 }
 
 .form-textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 130px;
 }
 
+/* ===== CONTADOR ===== */
 .char-counter {
     text-align: right;
-    font-size: 0.8rem;
-    color: #616061;
-    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 0.3rem;
 }
 
 .char-counter.limit-near {
-    color: #e8912d;
+    color: #f59e0b;
 }
 
 .char-counter.limit-reached {
-    color: #e01e5a;
+    color: #ec4899;
+    font-weight: 500;
 }
 
+/* ===== ERRORES ===== */
 .error-message {
-    color: #e01e5a;
+    color: #ec4899;
     font-size: 0.85rem;
-    margin-top: 0.25rem;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    margin-top: 0.3rem;
 }
 
+/* ===== BOTÓN ===== */
 .submit-btn {
-    background-color: #007a5a; /* Slack Green */
+    background: linear-gradient(
+        135deg,
+        #f472b6,
+        #8b5cf6
+    );
+
     color: white;
     border: none;
     padding: 14px;
     font-size: 1rem;
-    font-weight: 700;
-    border-radius: 4px;
+    font-weight: 600;
+    border-radius: 16px;
     cursor: pointer;
-    transition: background-color 0.2s;
+
+    transition: all 0.25s ease;
     margin-top: 1rem;
 }
 
-.submit-btn:hover {
-    background-color: #148567;
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0px 10px 25px rgba(139, 92, 246, 0.4);
 }
 
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== LINK ===== */
 .back-link {
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.2rem;
 }
 
 .back-link a {
-    color: #1264a3;
+    color: #8b5cf6;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;

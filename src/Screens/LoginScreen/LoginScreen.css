@@ -1,0 +1,123 @@
+/* ===== CONTENEDOR GENERAL ===== */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(135deg,
+            #fff9fb 0%,
+            #fdf2f8 40%,
+            #f3e8ff 100%);
+}
+
+/* ===== CARD ===== */
+.login-card {
+    background: white;
+    padding: 2.5rem;
+    width: 380px;
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px rgba(244, 114, 182, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ===== TITULOS ===== */
+.login-title {
+    text-align: center;
+    color: #f472b6;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.login-heading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #6b7280;
+    font-weight: 400;
+}
+
+/* ===== FORM ===== */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+.input-group input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+/* ===== BOTÓN ===== */
+.btn-primary {
+    margin-top: 0.5rem;
+    padding: 12px;
+    border-radius: 14px;
+    border: none;
+    background: #f472b6;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #ec4899;
+    transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ===== MENSAJES ===== */
+.error-message {
+    color: #dc2626;
+    font-size: 0.85rem;
+}
+
+.success-message {
+    color: #8b5cf6;
+    font-size: 0.85rem;
+}
+
+/* ===== FOOTER ===== */
+.login-footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.link {
+    margin-left: 5px;
+    color: #8b5cf6;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

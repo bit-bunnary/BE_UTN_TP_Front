@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
-import { WorkspaceContext } from '../../Context/WorkspaceContext';
+import React, { useContext } from "react";
+import { WorkspaceContext } from "../../Context/WorkspaceContext";
+import "./HomeScreen.css";
+
 
 const HomeScreen = () => {
-    const {workspace_list_loading,  workspace_list_error, workspace_list} = useContext(WorkspaceContext)
-    console.log(workspace_list)
+    const { workspace_list_loading, workspace_list_error, workspace_list } =
+        useContext(WorkspaceContext);
+    console.log(workspace_list);
 
-    
-    if(workspace_list_loading || !workspace_list){
-        return <span>Loading...</span>
+    if (workspace_list_loading || !workspace_list) {
+        return <span>Loading...</span>;
     }
-    
 
     return (
         <div>
@@ -25,9 +26,8 @@ const HomeScreen = () => {
             {
                 workspace_list.data.workspaces && workspace_list.data.workspaces.length === 0 && <span>No tienes workspaces</span>
             }
-
         </div>
     )
-}
+};
 
-export default HomeScreen
+export default HomeScreen;
