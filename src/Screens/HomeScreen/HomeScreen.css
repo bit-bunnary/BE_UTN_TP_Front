@@ -1,3 +1,19 @@
+/* Contenedor principal con sidebar y contenido */
+.home-container-flex {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg,
+            #fff9fb 0%,
+            #fdf2f8 50%,
+            #f3e8ff 100%);
+}
+
+/* Contenido principal */
+.home-main-content {
+    flex: 1;
+    padding: 2.5rem;
+    overflow-y: auto;
+}
 /* ===== CONTENEDOR GENERAL ===== */
 .home-container {
     min-height: 100vh;

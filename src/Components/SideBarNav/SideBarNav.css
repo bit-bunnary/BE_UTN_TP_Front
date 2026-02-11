@@ -1,0 +1,110 @@
+/* ===== SIDEBAR GENERAL ===== */
+.sidebar-nav {
+    width: 70px;
+    background: linear-gradient(180deg, #fff0f5 0%, #fce4f2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* ===== BOTONES ===== */
+.sidebar-nav__button {
+    background: none;
+    border: none;
+    color: #8b5cf6; /* color violeta */
+    font-size: 1.6rem;
+    margin: 0.75rem 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.sidebar-nav__button:hover {
+    color: #f472b6; /* rosa sakura */
+    transform: scale(1.2);
+}
+
+/* ===== PARTE SUPERIOR Y INFERIOR ===== */
+.sidebar-nav__upper,
+.sidebar-nav__lower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== POPUP DE CONFIGURACIÓN ===== */
+.settings-popup__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.settings-popup {
+    background: #fff0f5;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 280px;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+    animation: popupFade 0.3s ease-out;
+}
+
+@keyframes popupFade {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.settings-popup h3 {
+    margin-bottom: 1rem;
+    color: #8b5cf6;
+    text-align: center;
+}
+
+.settings-popup__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.settings-popup__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #2d2d2d;
+}
+
+.settings-popup__item:hover {
+    background: #f472b6;
+    color: white;
+}
+
+.settings-popup__close-btn {
+    margin-top: 1rem;
+    width: 100%;
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.settings-popup__close-btn:hover {
+    background: #f472b6;
+}
