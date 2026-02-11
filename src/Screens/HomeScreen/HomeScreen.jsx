@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import { WorkspaceContext } from "../../Context/WorkspaceContext";
 import "./HomeScreen.css";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
+import { useNavigate } from "react-router";
 
 const HomeScreen = () => {
     const { workspace_list_loading, workspace_list_error, workspace_list } =
         useContext(WorkspaceContext);
-    console.log(workspace_list);
+    console.log(workspace_list)
+
+    const navigate = useNavigate()
 
     if (workspace_list_loading || !workspace_list) {
         return <span>Loading...</span>;
@@ -31,7 +34,7 @@ const HomeScreen = () => {
                     {workspace_list.data.workspaces &&
                         workspace_list.data.workspaces.length > 0 &&
                         workspace_list.data.workspaces.map((workspace) => (
-                            <div key={workspace.workspace_id} className="workspace-card">
+                            <div key={workspace.workspace_id} className="workspace-card" onClick={() => navigate(`/workspace/${workspace.workspace_id}`)}>
                                 <div className="workspace-avatar">
                                     {workspace.workspace_title.charAt(0).toUpperCase()}
                                 </div>
