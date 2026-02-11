@@ -14,10 +14,9 @@ const HomeScreen = () => {
 
     return (
         <div className="home-container-flex">
-            {/* Sidebar a la izquierda */}
             <SidebarNav />
 
-            {/* Contenido principal */}
+            {/* Main content OwO */}
             <div className="home-main-content">
                 <div className="home-header">
                     <h1>Bienvenido nuevamente 🌸</h1>
