@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { Route, Routes } from 'react-router'
 import LoginScreen from './Screens/LoginScreen/LoginScreen'
 import RegisterScreen from './Screens/RegisterScreen/RegisterScreen'
-
 import AuthMiddleware from './Middlewares/AuthMiddleware'
 import WorkspaceContextProvider from './Context/WorkspaceContext'
 import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import CreateWorkspaceScreen from './Screens/CreateWorkspaceScreen/CreateWorkspaceScreen'
 import WorkspaceScreen from './Screens/WorkspaceScreen/WorkspaceScreen'
-import AuthContextProvider from './Context/AuthContext'
+
+import AuthContextProvider from './Context/AuthContext2'
 
 function App() {
   return (
