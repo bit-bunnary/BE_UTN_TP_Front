@@ -8,7 +8,7 @@ import HomeScreen from './Screens/HomeScreen/HomeScreen'
 import CreateWorkspaceScreen from './Screens/CreateWorkspaceScreen/CreateWorkspaceScreen'
 import WorkspaceScreen from './Screens/WorkspaceScreen/WorkspaceScreen'
 
-import AuthContextProvider from './Context/AuthContext2'
+import AuthContextProvider from './Context/AuthContext'
 
 function App() {
   return (
