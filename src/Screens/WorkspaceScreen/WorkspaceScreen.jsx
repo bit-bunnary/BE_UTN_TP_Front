@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
+import "./WorkspaceScreen.css"
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -8,31 +9,35 @@ const WorkspaceScreen = () => {
     const [selectedChannel, setSelectedChannel] = useState(null);
     const [messages, setMessages] = useState([]);
 
+    console.log(channels);
     useEffect(() => {
-        // Traer canales del workspace
-        fetch(`http://localhost:3000/workspaces/${workspaceId}/channels`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
+    // Traer canales del workspace
+    console.log("Token enviado:", localStorage.getItem("auth_token"));
+    fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            const channels = data.data?.channels || [];
+            setChannels(channels);
+            if (channels.length > 0) {
+                setSelectedChannel(channels[0]);
+            }
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setChannels(data.channels || []);
-                if (data.channels && data.channels.length > 0) {
-                    setSelectedChannel(data.channels[0]);
-                }
-            });
-    }, [workspaceId]);
+        .catch((err) => console.error(err));
+}, [workspaceId]);
 
     useEffect(() => {
         if (!selectedChannel) return;
 
         // Traer mensajes del canal seleccionado
         fetch(
-            `http://localhost:3000/workspaces/${workspaceId}/channels/${selectedChannel.channel_id}/messages`,
+            `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel.channel_id}/messages`,
             {
                 headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
                 },
             }
         )
@@ -41,59 +46,51 @@ const WorkspaceScreen = () => {
     }, [workspaceId, selectedChannel]);
 
     return (
-        <div style={{ display: "flex", minHeight: "100vh" }}>
+        <div className="workspace-container">
             <SidebarNav />
 
-            <div style={{ flex: 1, padding: "2rem" }}>
-                <h1>Workspace: {workspaceId}</h1>
+            <div className="workspace-content">
+                <h1 className="workspace-title">
+                    Workspace: {workspaceId}
+                </h1>
 
-                <div style={{ display: "flex", gap: "2rem" }}>
+                <div className="workspace-body">
                     {/* Lista de canales */}
-                    <div style={{ width: "200px" }}>
-                        <h3>Canales</h3>
-                        <ul style={{ listStyle: "none", padding: 0 }}>
+                    <div className="channels-container">
+                        <h3 className="channels-title">Canales</h3>
+                        <ul className="channels-list">
                             {channels.map((channel) => (
                                 <li
                                     key={channel.channel_id}
                                     onClick={() => setSelectedChannel(channel)}
-                                    style={{
-                                        cursor: "pointer",
-                                        padding: "0.5rem",
-                                        backgroundColor:
-                                            selectedChannel?.channel_id === channel.channel_id
-                                                ? "#f472b6"
-                                                : "transparent",
-                                        color:
-                                            selectedChannel?.channel_id === channel.channel_id
-                                                ? "white"
-                                                : "black",
-                                        borderRadius: "4px",
-                                        marginBottom: "0.25rem",
-                                    }}
+                                    className={`channel-item ${selectedChannel?.channel_id === channel.channel_id
+                                            ? "active"
+                                            : ""
+                                        }`}
                                 >
-                                    #{channel.channel_name}
+                                    # {channel.name}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
                     {/* Mensajes del canal */}
-                    <div style={{ flex: 1 }}>
-                        <h3>Mensajes</h3>
+                    <div className="messages-container">
+                        <h3 className="messages-title">Mensajes</h3>
+
                         {messages.length === 0 ? (
-                            <p>No hay mensajes aún 💌</p>
+                            <p className="empty-message">
+                                No hay mensajes aún 💌
+                            </p>
                         ) : (
                             messages.map((msg) => (
                                 <div
                                     key={msg.message_id}
-                                    style={{
-                                        padding: "0.5rem",
-                                        marginBottom: "0.25rem",
-                                        backgroundColor: "#fff0f6",
-                                        borderRadius: "8px",
-                                    }}
+                                    className="message-card"
                                 >
-                                    <strong>{msg.user_name}: </strong>
+                                    <span className="message-user">
+                                        {msg.user_name}:
+                                    </span>{" "}
                                     {msg.text}
                                 </div>
                             ))
