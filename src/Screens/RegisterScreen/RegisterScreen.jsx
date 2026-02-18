@@ -17,7 +17,7 @@ const RegisterScreen = () => {
         <div className="register-container">
             <div className="register-card">
 
-                <h1 className="register-title">🌸⋆˚BloomTalk˖°🌸</h1>
+                <h1 className="register-title">🌸 BloomTalk 🌸</h1>
                 <h2 className="register-heading">Crear Cuenta</h2>
 
                 <form onSubmit={onSubmitForm} className="login-form">
