@@ -21,7 +21,7 @@ const LoginScreen = () => {
         <div className="login-container">
             <div className="login-card">
 
-                <h1 className="login-title">BloomTalk 🌸</h1>
+                <h1 className="login-title">🌸 BloomTalk 🌸</h1>
                 <h2 className="login-heading">Iniciar Sesión</h2>
 
                 <form onSubmit={onSubmitForm} className="login-form">
