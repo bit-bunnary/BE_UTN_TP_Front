@@ -26,7 +26,7 @@ const WorkspaceScreen = () => {
 
     useEffect(() => {
     /* me trae canales del workspace */
-    console.log("Token enviado:", localStorage.getItem("auth_token"));
+    console.log("Token enviado:", localStorage.getItem("auth_token")); /* FIXME: Creo que puedo borrar esta línea */
     fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
