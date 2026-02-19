@@ -26,8 +26,7 @@ const WorkspaceScreen = () => {
     }, [workspaceId]);
 
     useEffect(() => {
-    /* me trae canales del workspace */
-    console.log("Token enviado:", localStorage.getItem("auth_token")); /* FIXME: Creo que puedo borrar esta línea */
+    /* me trae los canales del workspace */
     fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
@@ -141,23 +140,21 @@ const WorkspaceScreen = () => {
                     <div className="messages-container">
                         <h3 className="messages-title">Mensajes</h3>
 
-                        {messages.length === 0 ? (
-                            <p className="empty-message">
-                                No hay mensajes aún 💌
-                            </p>
-                        ) : (
-                            messages.map((msg) => (
-                                <div
-                                    key={msg._id}
-                                    className="message-card"
-                                >
-                                    <span className="message-user">
-                                        {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
-                                    </span>{" "}
-                                    {msg.message}
-                                </div>
-                            ))
-                        )}
+                        <div className="messages-list">
+                            {messages.length === 0 ? (
+                                <p className="empty-message">No hay mensajes aún 💌</p>
+                            ) : (
+                                messages.map((msg) => (
+                                    <div key={msg._id} className="message-card">
+                                        <span className="message-user">
+                                            {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
+                                        </span>{" "}
+                                        {msg.message}
+                                    </div>
+                                ))
+                            )}
+                        </div>
+
                         <div className="messages-input-container">
                             <input
                                 type="text"
