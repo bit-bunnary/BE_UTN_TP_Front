@@ -11,7 +11,7 @@ const WorkspaceScreen = () => {
 
     console.log(channels);
     useEffect(() => {
-    // Traer canales del workspace
+    // Trae canales del workspace
     console.log("Token enviado:", localStorage.getItem("auth_token"));
     fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
         headers: {
@@ -32,7 +32,7 @@ const WorkspaceScreen = () => {
     useEffect(() => {
         if (!selectedChannel) return;
 
-        // Traer mensajes del canal seleccionado
+        // Trae mensajes del canal seleccionado
         fetch(
             `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel.channel_id}/messages`,
             {
