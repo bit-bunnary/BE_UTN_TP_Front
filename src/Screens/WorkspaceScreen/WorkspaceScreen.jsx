@@ -8,10 +8,24 @@ const WorkspaceScreen = () => {
     const [channels, setChannels] = useState([]);
     const [selectedChannel, setSelectedChannel] = useState(null);
     const [messages, setMessages] = useState([]);
+    const [workspace, setWorkspace] = useState(null);
 
-    console.log(channels);
     useEffect(() => {
-    // Trae canales del workspace
+        /* Me trae el nombre del workspace */
+        fetch(`http://localhost:8180/api/workspace/${workspaceId}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setWorkspace(data.data.workspace);
+            })
+            .catch((err) => console.error(err));
+    }, [workspaceId]);
+
+    useEffect(() => {
+    /* me trae canales del workspace */
     console.log("Token enviado:", localStorage.getItem("auth_token"));
     fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
         headers: {
@@ -32,7 +46,7 @@ const WorkspaceScreen = () => {
     useEffect(() => {
         if (!selectedChannel) return;
 
-        // Trae mensajes del canal seleccionado
+        /* me trae mensajes del canal seleccionado */
         fetch(
             `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel.channel_id}/messages`,
             {
@@ -51,7 +65,7 @@ const WorkspaceScreen = () => {
 
             <div className="workspace-content">
                 <h1 className="workspace-title">
-                    Workspace: {workspaceId}
+                    Workspace: {workspace?.title}
                 </h1>
 
                 <div className="workspace-body">
