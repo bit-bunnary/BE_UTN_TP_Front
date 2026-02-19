@@ -90,3 +90,37 @@
     font-weight: 600;
     color: #ec4899;
 }
+
+/* ===== INPUT PARA MENSAJITOS ===== */
+.messages-input-container {
+    display: flex;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.messages-input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    outline: none;
+    font-size: 14px;
+}
+
+.messages-input:focus {
+    border-color: #f472b6;
+}
+
+.messages-send-btn {
+    background-color: #f472b6;
+    color: white;
+    border: none;
+    padding: 0 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.messages-send-btn:hover {
+    background-color: #ec4899;
+}

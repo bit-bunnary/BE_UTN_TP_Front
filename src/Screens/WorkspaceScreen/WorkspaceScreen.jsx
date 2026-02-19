@@ -9,6 +9,7 @@ const WorkspaceScreen = () => {
     const [selectedChannel, setSelectedChannel] = useState(null);
     const [messages, setMessages] = useState([]);
     const [workspace, setWorkspace] = useState(null);
+    const [newMessage, setNewMessage] = useState("");
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -69,6 +70,44 @@ const WorkspaceScreen = () => {
         .catch((err) => console.error("Error fetch mensajes:", err));
     }, [workspaceId, selectedChannel]);
 
+    const handleSendMessage = async () => {
+    if (!newMessage.trim() || !selectedChannel) return;
+
+    try {
+        const res = await fetch(
+            `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+                },
+                body: JSON.stringify({ content: newMessage }),
+            }
+        );
+        const data = await res.json();
+
+        if (!data.ok) {
+            console.error("Error al enviar mensaje:", data.message);
+            return;
+        }
+
+        const newMsg = {
+            ...data.data.message,
+            fk_workspace_member_id: {
+                fk_id_user: {
+                    username: data.data.user.username
+                }
+            }
+        };
+
+        setMessages(prev => [...prev, newMsg]);
+        setNewMessage("");/* limpia mi input */
+    } catch (err) {
+        console.error("Error enviando mensaje:", err);
+    }
+};
+
     return (
         <div className="workspace-container">
             <SidebarNav />
@@ -119,6 +158,21 @@ const WorkspaceScreen = () => {
                                 </div>
                             ))
                         )}
+                        <div className="messages-input-container">
+                            <input
+                                type="text"
+                                placeholder="Escribe un mensaje..."
+                                value={newMessage}
+                                onChange={(e) => setNewMessage(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") handleSendMessage();
+                                }}
+                                className="messages-input"
+                            />
+                            <button onClick={handleSendMessage} className="messages-send-btn">
+                                Enviar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
