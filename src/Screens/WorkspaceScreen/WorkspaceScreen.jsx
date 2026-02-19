@@ -48,7 +48,7 @@ const WorkspaceScreen = () => {
 
         /* me trae mensajes del canal seleccionado */
         fetch(
-            `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel.channel_id}/messages`,
+            `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
@@ -56,7 +56,17 @@ const WorkspaceScreen = () => {
             }
         )
             .then((res) => res.json())
-            .then((data) => setMessages(data.messages || []));
+            .then((data) => {
+
+            if (!data.ok) {
+                console.error("Error al traer mensajes:", data.message);
+                return;
+            }
+
+            /* guardo los mensajes en el estado */
+            setMessages(data.data?.messages || []);
+        })
+        .catch((err) => console.error("Error fetch mensajes:", err));
     }, [workspaceId, selectedChannel]);
 
     return (
@@ -69,7 +79,7 @@ const WorkspaceScreen = () => {
                 </h1>
 
                 <div className="workspace-body">
-                    {/* Lista de canales */}
+                    {/* Listita de canales */}
                     <div className="channels-container">
                         <h3 className="channels-title">Canales</h3>
                         <ul className="channels-list">
@@ -88,7 +98,7 @@ const WorkspaceScreen = () => {
                         </ul>
                     </div>
 
-                    {/* Mensajes del canal */}
+                    {/* Mensajitos del canal */}
                     <div className="messages-container">
                         <h3 className="messages-title">Mensajes</h3>
 
@@ -99,13 +109,13 @@ const WorkspaceScreen = () => {
                         ) : (
                             messages.map((msg) => (
                                 <div
-                                    key={msg.message_id}
+                                    key={msg._id}
                                     className="message-card"
                                 >
                                     <span className="message-user">
-                                        {msg.user_name}:
+                                        {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
                                     </span>{" "}
-                                    {msg.text}
+                                    {msg.message}
                                 </div>
                             ))
                         )}
