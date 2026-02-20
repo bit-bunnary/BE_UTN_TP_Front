@@ -62,7 +62,7 @@
 
 /* ===== SCROLL CONTAINER ===== */
 .workspace-scroll-container {
-    max-height: 700px; /* ajustá según lo que quieras */
+    max-height: 700px;
     overflow-y: auto;
 
     padding: 20px;
