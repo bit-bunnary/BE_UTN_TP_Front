@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
@@ -10,6 +10,7 @@ const WorkspaceScreen = () => {
     const [messages, setMessages] = useState([]);
     const [workspace, setWorkspace] = useState(null);
     const [newMessage, setNewMessage] = useState("");
+    const messagesListEnd = useRef(null)
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -68,6 +69,14 @@ const WorkspaceScreen = () => {
         })
         .catch((err) => console.error("Error fetch mensajes:", err));
     }, [workspaceId, selectedChannel]);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const scrollToBottom = () => {
+    messagesListEnd.current?.scrollIntoView({ behavior: "smooth" });
+    }
 
     const handleSendMessage = async () => {
     if (!newMessage.trim() || !selectedChannel) return;
@@ -153,6 +162,7 @@ const WorkspaceScreen = () => {
                                     </div>
                                 ))
                             )}
+                            <div ref={messagesListEnd} />
                         </div>
 
                         <div className="messages-input-container">
