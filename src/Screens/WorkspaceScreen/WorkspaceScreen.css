@@ -10,7 +10,7 @@
 
 .workspace-content {
     flex: 1;
-    padding: 32px;
+    padding: 20px;
 }
 
 .workspace-title {
@@ -21,7 +21,7 @@
 /* ===== ESTRUCTURA INTERNA ===== */
 .workspace-body {
     display: flex;
-    gap: 32px;
+    gap: 20px;
 }
 
 /* ===== CANALES ===== */
