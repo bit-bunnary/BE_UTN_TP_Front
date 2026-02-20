@@ -31,24 +31,28 @@ const HomeScreen = () => {
                         <span className="error-message">{workspace_list_error.message}</span>
                     )}
 
-                    <div className="workspace-grid">
-                        {workspace_list.data.workspaces &&
-                            workspace_list.data.workspaces.length > 0 &&
-                            workspace_list.data.workspaces.map((workspace) => (
-                                <div key={workspace.workspace_id} className="workspace-card" onClick={() => navigate(`/workspace/${workspace.workspace_id}`)}>
+                    <div className="workspace-scroll-wrapper">
+                        <div className="workspace-scroll-container">
+                            <div className="workspace-grid">
+                                {workspace_list.data.workspaces &&
+                                    workspace_list.data.workspaces.length > 0 &&
+                                    workspace_list.data.workspaces.map((workspace) => (
+                                        <div key={workspace.workspace_id} className="workspace-card" onClick={() => navigate(`/workspace/${workspace.workspace_id}`)}>
 
-                                    <div className="workspace-avatar">
-                                        {workspace.workspace_title.charAt(0).toUpperCase()}
-                                    </div>
-                                    <span className="homescreen-workspace-title">{workspace.workspace_title}</span>
+                                            <div className="workspace-avatar">
+                                                {workspace.workspace_title.charAt(0).toUpperCase()}
+                                            </div>
+                                            <span className="homescreen-workspace-title">{workspace.workspace_title}</span>
 
-                                </div>
-                            ))}
+                                        </div>
+                                    ))}
 
-                        {workspace_list.data.workspaces &&
-                            workspace_list.data.workspaces.length === 0 && (
-                                <span className="empty-message">No tienes workspaces aún 💮</span>
-                            )}
+                                {workspace_list.data.workspaces &&
+                                    workspace_list.data.workspaces.length === 0 && (
+                                        <span className="empty-message">No tienes workspaces aún 💮</span>
+                                    )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
