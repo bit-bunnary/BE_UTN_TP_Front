@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -10,7 +11,10 @@ const WorkspaceScreen = () => {
     const [messages, setMessages] = useState([]);
     const [workspace, setWorkspace] = useState(null);
     const [newMessage, setNewMessage] = useState("");
-    const messagesListEnd = useRef(null)
+    const messagesListEnd = useRef(null);
+    const [openMenuMessageId, setOpenMenuMessageId] = useState(null);
+    const [messageToDelete, setMessageToDelete] = useState(null);
+    const dropdownRef = useRef(null)
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -110,11 +114,64 @@ const WorkspaceScreen = () => {
         };
 
         setMessages(prev => [...prev, newMsg]);
-        setNewMessage("");/* limpia mi input */
-    } catch (err) {
-        console.error("Error enviando mensaje:", err);
+        setNewMessage("");/* limpia mi input para no tener que borrar mi mensaje */
+    }
+    
+    catch (error) {
+        console.error("Error enviando mensaje:", error);
     }
 };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setOpenMenuMessageId(null);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+/* Permite eliminar el mensaje */
+    const handleDeleteMessage = async () => {
+        if (!messageToDelete) return;
+
+        try {
+            const res = await fetch(
+                `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages/${messageToDelete}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
+                    },
+                }
+            );
+
+            const data = await res.json();
+
+            if (!data.ok) {
+                console.error("Error al eliminar:", data.message);
+                return;
+            }
+
+            /* Elimina el mensaje del estado */
+            setMessages(prev => prev.filter(msg => msg._id !== messageToDelete));
+
+            /* Cierra el popup */
+            setMessageToDelete(null);
+            setOpenMenuMessageId(null);
+
+        } catch (error) {
+            console.error("Error eliminando mensaje:", error);
+        }
+    }
 
     return (
         <div className="workspace-container">
@@ -155,10 +212,30 @@ const WorkspaceScreen = () => {
                             ) : (
                                 messages.map((msg) => (
                                     <div key={msg._id} className="message-card">
-                                        <span className="message-user">
-                                            {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
-                                        </span>{" "}
-                                        {msg.message}
+                                        <div className="message-header">
+                                            <span className="message-user">
+                                                {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
+                                            </span>{" "}
+
+                                            <div className="message-menu-container" ref={dropdownRef}>
+                                                <button className="message-menu-btn" onClick={() => setOpenMenuMessageId(
+                                                            openMenuMessageId === msg._id ? null : msg._id
+                                                        )}>
+                                                    <HiOutlineDotsVertical size={18} />
+                                                </button>
+                                                {openMenuMessageId === msg._id && (
+                                                    <div className="message-dropdown">
+                                                        <button
+                                                            onClick={() => setMessageToDelete(msg._id)}className="delete-option">
+                                                            Eliminar
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            {msg.message}
+                                        </div>
                                     </div>
                                 ))
                             )}
@@ -183,6 +260,27 @@ const WorkspaceScreen = () => {
                     </div>
                 </div>
             </div>
+            {messageToDelete && (
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <p>¿Estás seguro de que quieres eliminar este mensaje?</p>
+                        <div className="modal-buttons">
+                            <button
+                                className="cancel-btn"
+                                onClick={() => setMessageToDelete(null)}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="confirm-delete-btn"
+                                onClick={handleDeleteMessage}
+                            >
+                                Eliminar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
