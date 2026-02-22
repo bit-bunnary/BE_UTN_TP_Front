@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BsPersonWorkspace } from "react-icons/bs";
 import { GiLockedHeart , GiHeartKey } from "react-icons/gi";
 import { TbLockHeart , TbBellHeart, TbHeartPlus , TbMessage2Heart , TbHome , TbSettingsHeart, TbDoorExit } from "react-icons/tb";
 import { BiLogOut } from "react-icons/bi";
