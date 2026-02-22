@@ -14,7 +14,6 @@ const WorkspaceScreen = () => {
     const messagesListEnd = useRef(null);
     const [openMenuMessageId, setOpenMenuMessageId] = useState(null);
     const [messageToDelete, setMessageToDelete] = useState(null);
-    const dropdownRef = useRef(null)
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -122,22 +121,6 @@ const WorkspaceScreen = () => {
     }
 };
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                dropdownRef.current &&
-                !dropdownRef.current.contains(event.target)
-            ) {
-                setOpenMenuMessageId(null);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
 /* Permite eliminar el mensaje */
     const handleDeleteMessage = async () => {
@@ -174,7 +157,7 @@ const WorkspaceScreen = () => {
     }
 
     return (
-        <div className="workspace-container">
+        <div className="workspace-container" onClick={() => setOpenMenuMessageId(null)}>
             <SidebarNav />
 
             <div className="workspace-content">
@@ -217,16 +200,20 @@ const WorkspaceScreen = () => {
                                                 {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
                                             </span>{" "}
 
-                                            <div className="message-menu-container" ref={dropdownRef}>
-                                                <button className="message-menu-btn" onClick={() => setOpenMenuMessageId(
+                                            <div className="message-menu-container">
+                                                <button className="message-menu-btn" onClick={(e) => {
+                                                e.stopPropagation();
+                                                setOpenMenuMessageId(
                                                             openMenuMessageId === msg._id ? null : msg._id
-                                                        )}>
+                                                        )}}>
                                                     <HiOutlineDotsVertical size={18} />
                                                 </button>
                                                 {openMenuMessageId === msg._id && (
                                                     <div className="message-dropdown">
                                                         <button
-                                                            onClick={() => setMessageToDelete(msg._id)}className="delete-option">
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                setMessageToDelete(msg._id)}}className="delete-option">
                                                             Eliminar
                                                         </button>
                                                     </div>
