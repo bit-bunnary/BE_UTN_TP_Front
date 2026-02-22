@@ -43,16 +43,19 @@
 }
 
 .channels-list {
+    display: flex;
+    flex-direction: column;
     list-style: none;
-    padding: 0;
-    margin: 0;
+    gap: 6px;
 }
 
 .channel-item {
+    display: flex;
+    align-items: center;
     cursor: pointer;
     padding: 10px;
+    gap: 6px;
     border-radius: 10px;
-    margin-bottom: 6px;
     transition: all 0.2s ease;
 }
 

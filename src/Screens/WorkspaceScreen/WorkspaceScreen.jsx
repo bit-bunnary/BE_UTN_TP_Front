@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { TbChevronDown, TbHash  } from "react-icons/tb";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -179,7 +180,7 @@ const WorkspaceScreen = () => {
                                             : ""
                                         }`}
                                 >
-                                    # {channel.name}
+                                    <TbHash /> {channel.name}
                                 </li>
                             ))}
                         </ul>
@@ -206,7 +207,7 @@ const WorkspaceScreen = () => {
                                                 setOpenMenuMessageId(
                                                             openMenuMessageId === msg._id ? null : msg._id
                                                         )}}>
-                                                    <HiOutlineDotsVertical size={18} />
+                                                    <TbChevronDown size={18} />
                                                 </button>
                                                 {openMenuMessageId === msg._id && (
                                                     <div className="message-dropdown">
