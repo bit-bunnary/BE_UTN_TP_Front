@@ -38,7 +38,11 @@ const SidebarNav = () => {
                             <li className="settings-popup__item"><TbLockHeart /> Privacidad</li>
                             <li className="settings-popup__item"><TbMessage2Heart /> Chats</li>
                             <li className="settings-popup__item"><TbBellHeart/> Notificaciones</li>
-                            <li className="settings-popup__item"><TbDoorExit /> Cerrar sesión</li>
+                            <li className="settings-popup__item" onClick={() => {
+                                localStorage.removeItem("auth_token")
+                                setShowSettingsMenu(false)
+                                navigate("/")
+                            }}><TbDoorExit /> Cerrar sesión</li>
                         </ul>
                         <button className="settings-popup__close-btn" onClick={() => setShowSettingsMenu(false)}>
                             Cerrar
