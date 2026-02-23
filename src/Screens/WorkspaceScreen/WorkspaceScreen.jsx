@@ -192,7 +192,7 @@ const WorkspaceScreen = () => {
 
                         <div className="messages-list">
                             {messages.length === 0 ? (
-                                <p className="empty-message">
+                                <p className="empty-state">
                                     No hay mensajes aún 
                                     <img src="/mail7.gif" alt="Sparkling Letter ✉︎" className="letter-gif"/>
                                 </p>

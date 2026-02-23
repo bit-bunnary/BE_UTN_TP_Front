@@ -84,12 +84,18 @@
 .messages-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     flex: 1; /* ocupa todo el espacio disponible arriba del input >:3 */
     overflow-y: auto;
 }
 
+.empty-state {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #9ca3af;
+}
 
 .messages-input-container {
     display: flex;
