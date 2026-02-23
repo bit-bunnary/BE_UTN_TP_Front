@@ -99,6 +99,53 @@
     box-shadow: 0px 10px 15px rgba(139, 92, 246, 0.25);
 }
 
+.workspace-menu-container {
+    position: relative;
+    margin-left: auto;
+}
+
+.workspace-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px;
+    border-radius: 16px;
+
+    color: #9ca3af;
+
+    opacity: 0;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.workspace-card:hover .workspace-menu-btn {
+    opacity: 1;
+}
+
+.workspace-menu-btn.active {
+    opacity: 1;
+}
+
+.workspace-menu-btn:hover {
+    background-color: #f7dbe6;
+    color: #ec4899;
+}
+
+.workspace-dropdown {
+    position: absolute;
+    right: 0;
+    top: 26px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    padding: 6px;
+    z-index: 10;
+}
+
 /* ===== AVATAR ===== */
 .workspace-avatar {
     width: 50px;

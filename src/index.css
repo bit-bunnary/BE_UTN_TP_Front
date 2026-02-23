@@ -29,3 +29,29 @@ body {
     background-color: var(--bg);
     color: var(--text-main);
 }
+
+/* ===== CURSOR ===== */
+
+html, body {
+    cursor: url('/cursors/oxy-normal.cur'), auto;
+}
+
+a {
+    cursor: url('/cursors/oxy-link.cur'), pointer;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+    cursor: url('/cursors/oxy-text.cur'), text;
+}
+
+/* FIXME: no funcionan :( */
+/* button {
+    cursor: url('/cursors/oxy-link.cur'), pointer;
+}
+
+
+button:disabled {
+    cursor: url('/cursors/oxy-busy.cur'), wait;
+} */
