@@ -13,7 +13,7 @@ const useCreateWorkspace = () => {
         const newErrors = {};
 
         if(!form_values.description || form_values.description.trim() === ''){
-            newErrors.description = 'Es obligatorio un título para el espacio de trabajo.';
+            newErrors.description = 'Es obligatorio una descripción para el espacio de trabajo.';
         } else if (form_values.description.lenght > 120){
             newErrors.description = 'La descripción no puede sobrepasar los 120 caracteres.';
         }

@@ -192,7 +192,10 @@ const WorkspaceScreen = () => {
 
                         <div className="messages-list">
                             {messages.length === 0 ? (
-                                <p className="empty-message">No hay mensajes aún 💌</p>
+                                <p className="empty-message">
+                                    No hay mensajes aún 
+                                    <img src="/mail7.gif" alt="Sparkling Letter ✉︎" className="letter-gif"/>
+                                </p>
                             ) : (
                                 messages.map((msg) => (
                                     <div key={msg._id} className="message-card">
