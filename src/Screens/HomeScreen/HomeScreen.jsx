@@ -62,7 +62,11 @@ const HomeScreen = () => {
             <div className="home-main-content">
                 <div className="home-centered-content">
                     <div className="home-header">
-                        <h1>Bienvenido nuevamente 🌸</h1>
+                        <h1>
+                            <img src="/pink-bow.gif" alt="Pink bow 🎀" className="pink-bow-gif"/>
+                            Bienvenido nuevamente
+                            <img src="/pink-bow.gif" alt="Pink bow 🎀" className="pink-bow-gif"/>
+                        </h1>
                         <p className="home-subtitle">Elige un workspace para comenzar</p>
                     </div>
 
