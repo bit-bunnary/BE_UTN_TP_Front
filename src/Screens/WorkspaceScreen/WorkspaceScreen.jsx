@@ -4,6 +4,7 @@ import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { TbChevronDown, TbHash  } from "react-icons/tb";
+import { BsEnvelopeHeart , BsEnvelopeOpenHeart } from "react-icons/bs";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -245,7 +246,11 @@ const WorkspaceScreen = () => {
                                 className="messages-input"
                             />
                             <button onClick={handleSendMessage} className="messages-send-btn">
-                                Enviar
+                                {newMessage.trim() === "" ? (
+                                    <BsEnvelopeHeart size={20} />
+                                ) : (
+                                    <BsEnvelopeOpenHeart size={20} />
+                                )}
                             </button>
                         </div>
                     </div>

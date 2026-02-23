@@ -155,6 +155,8 @@
 }
 
 .messages-send-btn {
+    display: flex;
+    align-items: center;
     background-color: #f472b6;
     color: white;
     border: none;
