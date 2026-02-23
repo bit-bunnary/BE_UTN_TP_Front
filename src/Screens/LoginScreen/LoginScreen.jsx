@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { login } from '../../Services/authService';
 import useRequest from '../../Hooks/useRequest';
 import useForm from '../../Hooks/useForm';
 import useLogin from '../../Hooks/useLogin';
 import "./LoginScreen.css"
+import { TbEye, TbEyeClosed } from "react-icons/tb";
 
 
 const LoginScreen = () => {
@@ -16,6 +17,8 @@ const LoginScreen = () => {
         error,
         response
     } = useLogin()
+
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div className="login-container">
@@ -38,16 +41,19 @@ const LoginScreen = () => {
                         />
                     </div>
 
-                    <div className="input-group">
+                    <div className="input-group password-group">
                         <label htmlFor="password">Contraseña</label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="password"
                             name="password"
                             onChange={onChangeFieldValue}
                             value={form_state.password}
                             required
                         />
+                        <button type='button' onClick={() => setShowPassword(!showPassword)} className='password-toggle-btn'>
+                            {showPassword ? <TbEyeClosed size={20}/> : <TbEye size={20}/>}
+                        </button>
                     </div>
 
                     {error && (
