@@ -1,4 +1,8 @@
 /* ===== VARIABLES GLOBALES ===== */
+html, body, #root {
+    height: 100%;
+}
+
 :root {
     --bg: #fff9fb;
     --card-bg: #ffffff;
@@ -24,5 +28,4 @@
 body {
     background-color: var(--bg);
     color: var(--text-main);
-    min-height: 100vh;
 }

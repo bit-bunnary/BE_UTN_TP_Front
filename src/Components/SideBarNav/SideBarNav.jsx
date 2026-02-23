@@ -17,7 +17,7 @@ const SidebarNav = () => {
                 <button className="sidebar-nav__button" title="Inicio" onClick={() => navigate("/home")}><TbHome  /></button>
                 <button className="sidebar-nav__button" title="Mensajes Directos"><TbMessage2Heart  /></button>
                 <button className="sidebar-nav__button" title="Actividad"><TbBellHeart /></button>
-                <button className="sidebar-nav__button" title="Crear Workspace"><TbHeartPlus  /></button>
+                <button className="sidebar-nav__button" title="Crear Workspace" onClick={() => navigate("/create-workspace")}><TbHeartPlus  /></button>
                 
                 <button className="sidebar-nav__button" title="Configuración" onClick={()=> setShowSettingsMenu(true)}>
                     <TbSettingsHeart /> 

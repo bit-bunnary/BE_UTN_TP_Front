@@ -1,9 +1,28 @@
+/* ===== LAYOUT FLEX CON SIDEBAR ===== */
+.create-container-flex {
+    display: flex;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        #fff9fb 0%,
+        #fdf2f8 40%,
+        #f3e8ff 100%
+    );
+}
+
+.create-main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
 /* ===== CONTENEDOR GENERAL ===== */
 .create-workspace-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 2rem;
 
     background: linear-gradient(
