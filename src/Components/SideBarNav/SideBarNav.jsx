@@ -3,17 +3,18 @@ import { GiLockedHeart , GiHeartKey } from "react-icons/gi";
 import { TbLockHeart , TbBellHeart, TbHeartPlus , TbMessage2Heart , TbHome , TbSettingsHeart, TbDoorExit } from "react-icons/tb";
 import { BiLogOut } from "react-icons/bi";
 import "./SideBarNav.css"
+import { useNavigate } from 'react-router';
 
 const SidebarNav = () => {
 
 
     const [showSettingsMenu, setShowSettingsMenu] =useState(false)
-
+    const navigate = useNavigate()
 
     return (
         <div className="sidebar-nav">
             <div className='sidebar-nav__upper'>    
-                <button className="sidebar-nav__button" title="Inicio"><TbHome  /></button>
+                <button className="sidebar-nav__button" title="Inicio" onClick={() => navigate("/home")}><TbHome  /></button>
                 <button className="sidebar-nav__button" title="Mensajes Directos"><TbMessage2Heart  /></button>
                 <button className="sidebar-nav__button" title="Actividad"><TbBellHeart /></button>
                 <button className="sidebar-nav__button" title="Crear Workspace"><TbHeartPlus  /></button>
