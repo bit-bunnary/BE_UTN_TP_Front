@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import useRegister from "../../Hooks/useRegister.jsx";
 import "./RegisterScreen.css";
+import { TbEye, TbEyeClosed } from "react-icons/tb";
 
 const RegisterScreen = () => {
     const {
@@ -12,6 +13,8 @@ const RegisterScreen = () => {
         error,
         response
     } = useRegister();
+
+    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <div className="register-container">
@@ -46,16 +49,19 @@ const RegisterScreen = () => {
                         />
                     </div>
 
-                    <div className="input-group">
+                    <div className="input-group password-register-group">
                         <label htmlFor="password">Contraseña</label>
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             id="password"
                             name="password"
                             value={form_state.password}
                             onChange={onChangeFieldValue}
                             required
                         />
+                        <button type="button" className="password-register-toggle-btn" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <TbEyeClosed size={20} /> : <TbEye size={20} />}
+                        </button>
                     </div>
 
                     {error && (

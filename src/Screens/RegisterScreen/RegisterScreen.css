@@ -93,6 +93,35 @@
     cursor: not-allowed;
 }
 
+.password-register-group {
+    position: relative;
+}
+
+
+.password-group input {
+    padding-right: 40px;
+}
+
+
+.password-register-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.2s ease;
+}
+
+.password-register-toggle-btn:hover {
+    color: #ec4899;
+}
+
 /* ===== MENSAJES ===== */
 .error-message {
     color: #dc2626;
