@@ -38,8 +38,17 @@
 }
 
 .channels-title {
+    display: flex;
     margin-bottom: 16px;
     color: #6b7280;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(
+        to right,
+        #f472b6,
+        #f3e8ff
+    ) 1;
 }
 
 .channels-list {
@@ -104,8 +113,17 @@
 }
 
 .messages-title {
+    display: flex;
     margin-bottom: 16px;
     color: #6b7280;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(
+        to right,
+        #f472b6,
+        #f3e8ff
+    ) 1;
 }
 
 .empty-message {
