@@ -23,14 +23,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 32px;
 
-    background: linear-gradient(
+    /* background: linear-gradient(
         135deg,
         #fff9fb 0%,
         #fdf2f8 40%,
         #f3e8ff 100%
-    );
+    ); */
 
     font-family: 'Inter', sans-serif;
 }
@@ -40,7 +40,7 @@
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
 
-    padding: 3rem;
+    padding: 48px;
     border-radius: 24px;
 
     box-shadow: 0px 20px 50px rgba(244, 114, 182, 0.18);
@@ -50,7 +50,7 @@
 
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: 28px;
 
     transition: all 0.3s ease;
 }
@@ -59,34 +59,35 @@
 
 /* ===== HEADER ===== */
 .create-workspace-header h1 {
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: 600;
     color: #f472b6;
     text-align: center;
+    padding-bottom: 15px;
 }
 
 .create-workspace-header p {
     color: #6b7280;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 16px;
 }
 
 /* ===== FORM ===== */
 .workspace-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 24px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 10px;
 }
 
 .form-label {
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 14px;
     color: #6b7280;
 }
 
@@ -96,7 +97,7 @@
     padding: 14px;
     border: 1px solid #e5e7eb;
     border-radius: 14px;
-    font-size: 0.95rem;
+    font-size: 15px;
     outline: none;
     width: 100%;
     transition: all 0.25s ease;
@@ -117,9 +118,9 @@
 /* ===== CONTADOR ===== */
 .char-counter {
     text-align: right;
-    font-size: 0.75rem;
+    font-size: 12px;
     color: #9ca3af;
-    margin-top: 0.3rem;
+    margin-top: 4px;
 }
 
 .char-counter.limit-near {
@@ -134,8 +135,8 @@
 /* ===== ERRORES ===== */
 .error-message {
     color: #ec4899;
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
+    font-size: 14px;
+    margin-top: 4px;
 }
 
 /* ===== BOTÓN ===== */
@@ -149,13 +150,13 @@
     color: white;
     border: none;
     padding: 14px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 16px;
     cursor: pointer;
 
     transition: all 0.25s ease;
-    margin-top: 1rem;
+    margin-top: 16px;
 }
 
 .submit-btn:hover:not(:disabled) {
@@ -171,16 +172,162 @@
 /* ===== LINK ===== */
 .back-link {
     text-align: center;
-    margin-top: 1.2rem;
+    margin-top: 20px;
 }
 
 .back-link a {
     color: #8b5cf6;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 14px;
     font-weight: 500;
 }
 
 .back-link a:hover {
     text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (min-width: 1920px) {
+    .create-workspace-card {
+        max-width: 600px;
+        padding: 48px;
+    }
+
+    .create-workspace-header h1 {
+        font-size: 42px;
+
+    }
+
+    .create-workspace-header p {
+        font-size: 24px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 16px;
+        font-size: 18px;
+    }
+
+    .submit-btn {
+        padding: 16px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1440px){
+    .create-workspace-card {
+        max-width: 550px;
+        padding: 40px;
+    }
+
+    .create-workspace-header h1 {
+        font-size: 30px;
+    }
+
+    .create-workspace-header p {
+        font-size: 16px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .create-workspace-card {
+        max-width: 450px;
+        padding: 32px;
+    }
+
+    .create-workspace-header h1 {
+        font-size: 28px;
+    }
+
+    .create-workspace-header p {
+        font-size: 18px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 720px) {
+    .create-main-content{
+        padding: 10px;
+    }
+
+    .create-workspace-card {
+        max-width: 380px;
+        padding: 28px;
+    }
+
+    .create-workspace-header h1 {
+        font-size: 24px;
+    }
+
+    .create-workspace-header p {
+        font-size: 16px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .create-main-content{
+            padding: 10px;
+        }
+
+    .create-workspace-container{
+        padding: 15px;
+    }
+
+    .create-workspace-card {
+        width: 90%;
+        padding: 14px;
+        border-radius: 16px;
+    }
+
+    .create-workspace-header h1 {
+        font-size: 22px;
+    }
+
+    .create-workspace-header p {
+        font-size: 14px;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 8px;
+        font-size: 13px;
+    }
+
+    .submit-btn {
+        padding: 8px;
+        font-size: 13px;
+    }
 }
