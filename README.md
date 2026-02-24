@@ -1,4 +1,4 @@
-# ︵‿₊⊱🌸 BloomTalk Frontend 🌸⊰₊‿︵
+# ︵‿₊⊱🌸 BloomTalk 🌸⊰₊‿︵
 
 Frontend del proyecto **BloomTalk**, un clon de Slack.  
 Desarrollado con **React.js**, este frontend permite a los usuarios:
