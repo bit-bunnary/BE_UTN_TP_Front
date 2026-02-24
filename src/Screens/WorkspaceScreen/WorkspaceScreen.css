@@ -54,7 +54,7 @@
     box-shadow: 0px 10px 30px rgba(244, 114, 182, 0.1);
 
     /* esto es para el scroll */
-    height: 650px;
+    height: 620px;
     overflow-y: auto;
 }
 
@@ -108,7 +108,7 @@
 
     display: flex;
     flex-direction: column;
-    height: 650px;
+    height: 620px;
 }
 
 .messages-list {
@@ -403,7 +403,7 @@
 
     .workspace-content {
         padding: 20px 16px;
-        padding-bottom: 110px; /* espacio para sidebar bottom */
+        padding-bottom: 110px; 
         display: flex;
         flex-direction: column;
         height: 100%;
@@ -412,7 +412,7 @@
     .workspace-body {
         flex-direction: column;
         flex: 1;
-        overflow: hidden; /* MUY IMPORTANTE */
+        overflow: hidden;
     }
 
     .channels-container {
@@ -423,11 +423,12 @@
 
     .messages-container {
         width: 100%;
-        flex: 1; /* ocupa el resto del espacio */
+        flex: 1;
         height: auto;
-        min-height: 0; /* evita overflow raro */
+        min-height: 0;
         display: flex;
         flex-direction: column;
+        margin-bottom: 20px;
     }
 
     .messages-list {
