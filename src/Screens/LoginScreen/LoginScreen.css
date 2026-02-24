@@ -154,6 +154,56 @@
 
 /* ===== RESPONSIVE ===== */
 
+@media (min-width: 1920px) {
+    .login-card {
+        width: 550px;
+        padding: 48px;
+    }
+
+    .login-title {
+        font-size: 42px;
+    }
+
+    .login-heading {
+        font-size: 24px;
+    }
+
+    .input-group input {
+        padding: 16px;
+        font-size: 18px;
+    }
+
+    .btn-primary {
+        padding: 16px;
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .login-card {
+        width: 450px;
+        padding: 40px;
+    }
+
+    .login-title {
+        font-size: 36px;
+    }
+
+    .login-heading {
+        font-size: 22px;
+    }
+
+    .input-group input {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .btn-primary {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 1024px) {
     /* Reducimos un poco la card */
     .login-card {
