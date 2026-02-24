@@ -370,8 +370,15 @@
 @media (max-width: 720px) {
     .workspace-container {
         flex-direction: column;
-        height: 100vh;
+        height: 100dvh;
     }
+
+    .messages-input-container {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding-top: 8px;
+}
 
     .workspace-content {
         padding: 20px 16px;
@@ -405,6 +412,7 @@
     .messages-list {
         flex: 1;
         overflow-y: auto;
+        scroll-padding-bottom: 80px;
     }
 
     .workspace-title {
