@@ -4,7 +4,7 @@ import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { TbChevronDown, TbHash  } from "react-icons/tb";
-import { BsEnvelopeHeart , BsEnvelopeOpenHeart } from "react-icons/bs";
+import { BsEnvelopeHeart , BsEnvelopeOpenHeart , BsPersonAdd } from "react-icons/bs";
 import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
 import LoaderEnvelope from "../../Components/LoaderEnvelope/LoaderEnvelope.jsx";
 
