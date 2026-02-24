@@ -200,7 +200,7 @@ const WorkspaceScreen = () => {
                     <div className="messages-container">
                         <h3 className="messages-title">Mensajes</h3>
 
-                        <div className="messages-list">
+                        <div className={`messages-list ${messagesLoading ? "loading" : ""}`}>
                             {messagesLoading ? (
                                 <LoaderEnvelope size="medium" />  
                             ) : messages.length === 0 ? (

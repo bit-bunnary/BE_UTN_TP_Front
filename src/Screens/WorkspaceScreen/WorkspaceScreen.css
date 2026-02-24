@@ -97,6 +97,11 @@
     overflow-y: auto;
 }
 
+.messages-list.loading{
+    justify-content: center;
+    align-items: center;
+}
+
 .empty-state {
     margin: auto;
     display: flex;
