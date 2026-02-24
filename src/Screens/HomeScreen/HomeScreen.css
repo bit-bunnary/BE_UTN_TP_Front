@@ -2,11 +2,12 @@
 .home-container-flex {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(135deg,
-            #fff9fb 0%,
-            #fdf2f8 50%,
-            #f3e8ff 100%);
+        #fff9fb 0%,
+        #fdf2f8 50%,
+        #f3e8ff 100%);
+    overflow: hidden;
 }
 
 /* ===== CONTENIDO PRINCIPAL ===== */
@@ -64,15 +65,20 @@
 
 /* ===== SCROLL WRAPPER ===== */
 .workspace-scroll-wrapper {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     max-width: 850px;
 }
 
 /* ===== SCROLL CONTAINER ===== */
 .workspace-scroll-container {
-    max-height: 700px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: 550px;
     overflow-y: auto;
-
+    flex: 1;
     padding: 20px;
 }
 
