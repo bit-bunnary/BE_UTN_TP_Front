@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import "./WorkspaceScreen.css"
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import { TbChevronDown, TbHash  } from "react-icons/tb";
 import { BsEnvelopeHeart , BsEnvelopeOpenHeart , BsPersonAdd } from "react-icons/bs";
-import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
 import LoaderEnvelope from "../../Components/LoaderEnvelope/LoaderEnvelope.jsx";
 
 const WorkspaceScreen = () => {
@@ -20,6 +18,7 @@ const WorkspaceScreen = () => {
     const [messageToDelete, setMessageToDelete] = useState(null);
 
     const [messagesLoading, setMessagesLoading] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -172,9 +171,17 @@ const WorkspaceScreen = () => {
             <SidebarNav />
 
             <div className="workspace-content">
-                <h1 className="workspace-title">
-                    Workspace: {workspace?.title}
-                </h1>
+                <div className="workspace-title-container">
+                    <h1 className="workspace-title">
+                        Workspace: {workspace?.title}
+                    </h1>
+                    <BsPersonAdd 
+                            size={28} 
+                            className="invite-icon" 
+                            onClick={() => navigate(`/workspace/${workspaceId}/invite`)}
+                            title="Invitar a un miembro"
+                        />
+                </div>
 
                 <div className="workspace-body">
                     {/* Listita de canales */}

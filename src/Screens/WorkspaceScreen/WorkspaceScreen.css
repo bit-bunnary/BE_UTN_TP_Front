@@ -10,12 +10,33 @@
 
 .workspace-content {
     flex: 1;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.workspace-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.invite-icon {
+    cursor: pointer;
+    color: #8b5cf6;
+    transition: all 0.2s ease;
+}
+
+.invite-icon:hover {
+    color: #f472b6;
+    transform: scale(1.1);
 }
 
 .workspace-title {
     color: #f472b6;
-    margin-bottom: 1.5rem;
 }
 
 /* ===== ESTRUCTURA INTERNA ===== */

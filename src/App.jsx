@@ -9,6 +9,7 @@ import CreateWorkspaceScreen from './Screens/CreateWorkspaceScreen/CreateWorkspa
 import WorkspaceScreen from './Screens/WorkspaceScreen/WorkspaceScreen'
 
 import AuthContextProvider from './Context/AuthContext'
+import InviteMemberScreen from './Screens/InviteMemberScreen/InviteMemberScreen'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           } />
           <Route path='/create-workspace' element={<CreateWorkspaceScreen/>}/>
           <Route path='/workspace/:workspaceId' element={<WorkspaceScreen />} />
+          <Route path="/workspace/:workspaceId/invite" element={<InviteMemberScreen />} />
         </Route>
       </Routes>
     </AuthContextProvider>
