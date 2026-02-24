@@ -42,6 +42,10 @@ a {
     cursor: url('/cursors/oxy-link.cur'), pointer;
 }
 
+label, .input-group label {
+    cursor: url('/cursors/oxy-text.cur'), text;
+}
+
 input,
 textarea,
 [contenteditable="true"] {
