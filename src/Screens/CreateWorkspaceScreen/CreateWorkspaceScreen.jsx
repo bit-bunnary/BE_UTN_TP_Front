@@ -59,6 +59,12 @@ const CreateWorkspaceScreen = () => {
                                     value={form_state.description}
                                     onChange={onChangeFieldValue}
                                     disabled={isLoading}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && !e.shiftKey) {
+                                            e.preventDefault();
+                                            onSubmitForm(e);
+                                        }
+                                    }}
                                 />
                                 <div
                                     className={`char-counter ${form_state.description.length > 190
