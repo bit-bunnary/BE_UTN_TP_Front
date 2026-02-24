@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { WorkspaceContext } from "../../Context/WorkspaceContext";
 import "./HomeScreen.css";
 import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import { useNavigate } from "react-router";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
 
 const HomeScreen = () => {
     const { workspace_list_loading, workspace_list_error, workspace_list } =
@@ -13,10 +14,19 @@ const HomeScreen = () => {
     const [openMenuWorkspaceId, setOpenMenuWorkspaceId] = useState(null)
     const [workspaceToDelete, setWorkspaceToDelete] = useState(null)
 
+    const [minLoadingTimePassed, setMinLoadingTimePassed] = useState(false);
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        setMinLoadingTimePassed(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+}, []);
+
     const navigate = useNavigate()
 
-    if (workspace_list_loading || !workspace_list) {
-        return <span>Loading...</span>;
+    if (workspace_list_loading || !workspace_list || !minLoadingTimePassed) {
+        return <LoaderBloomTalk size="large" fullScreen key={workspace_list_loading ? "loading" : "loaded"}/>;
     }
 
     const handleDeleteWorkspace = async () => {

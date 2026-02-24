@@ -1,0 +1,30 @@
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-wrapper.fullscreen {
+    height: 100vh;
+    width: 100%;
+}
+
+/* ===== SIZE PRESETS ===== */
+.loader-gif {
+    object-fit: contain;
+}
+
+.loader-small {
+    width: 100px;
+    height: 100px;
+}
+
+.loader-medium {
+    width: 200px;
+    height: 200px;
+}
+
+.loader-large {
+    width: 500px;
+    height: 500px;
+}
