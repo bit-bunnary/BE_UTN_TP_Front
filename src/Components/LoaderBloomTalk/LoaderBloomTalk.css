@@ -28,3 +28,23 @@
     width: 500px;
     height: 500px;
 }
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 480px) {
+
+    .loader-small {
+        width: 70px;
+        height: 70px;
+    }
+
+    .loader-medium {
+        width: 140px;
+        height: 140px;
+    }
+
+    .loader-large {
+        width: 280px;
+        height: 280px;
+    }
+}
