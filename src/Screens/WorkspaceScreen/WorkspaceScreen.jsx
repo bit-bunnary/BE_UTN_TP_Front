@@ -247,7 +247,7 @@ const WorkspaceScreen = () => {
                             />
                             <button onClick={handleSendMessage} className="messages-send-btn">
                                 {newMessage.trim() === "" ? (
-                                    <BsEnvepeHeart size={20} />
+                                    <BsEnvelopeHeart size={20} />
                                 ) : (
                                     <BsEnvelopeOpenHeart size={20} />
                                 )}
