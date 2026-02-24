@@ -6,6 +6,7 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { TbChevronDown, TbHash  } from "react-icons/tb";
 import { BsEnvelopeHeart , BsEnvelopeOpenHeart } from "react-icons/bs";
 import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
+import LoaderEnvelope from "../../Components/LoaderEnvelope/LoaderEnvelope.jsx";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -201,7 +202,7 @@ const WorkspaceScreen = () => {
 
                         <div className="messages-list">
                             {messagesLoading ? (
-                                <LoaderBloomTalk size="medium" />  
+                                <LoaderEnvelope size="medium" />  
                             ) : messages.length === 0 ? (
                                 <p className="empty-state">
                                     No hay mensajes aún 
