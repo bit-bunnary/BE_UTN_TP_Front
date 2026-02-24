@@ -5,6 +5,7 @@ import "./WorkspaceScreen.css"
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { TbChevronDown, TbHash  } from "react-icons/tb";
 import { BsEnvelopeHeart , BsEnvelopeOpenHeart } from "react-icons/bs";
+import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -16,6 +17,8 @@ const WorkspaceScreen = () => {
     const messagesListEnd = useRef(null);
     const [openMenuMessageId, setOpenMenuMessageId] = useState(null);
     const [messageToDelete, setMessageToDelete] = useState(null);
+
+    const [messagesLoading, setMessagesLoading] = useState(false)
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
@@ -52,6 +55,10 @@ const WorkspaceScreen = () => {
     useEffect(() => {
         if (!selectedChannel) return;
 
+        setMessagesLoading(true)
+        setMessages([])
+
+
         /* me trae mensajes del canal seleccionado */
         fetch(
             `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
@@ -72,7 +79,8 @@ const WorkspaceScreen = () => {
             /* guardo los mensajes en el estado */
             setMessages(data.data?.messages || []);
         })
-        .catch((err) => console.error("Error fetch mensajes:", err));
+        .catch((err) => console.error("Error fetch mensajes:", err))
+        .finally(() => setMessagesLoading(false))
     }, [workspaceId, selectedChannel]);
 
     useEffect(() => {
@@ -192,7 +200,9 @@ const WorkspaceScreen = () => {
                         <h3 className="messages-title">Mensajes</h3>
 
                         <div className="messages-list">
-                            {messages.length === 0 ? (
+                            {messagesLoading ? (
+                                <LoaderBloomTalk size="medium" />  
+                            ) : messages.length === 0 ? (
                                 <p className="empty-state">
                                     No hay mensajes aún 
                                     <img src="/mail7.gif" alt="Sparkling Letter ✉︎" className="letter-gif"/>
