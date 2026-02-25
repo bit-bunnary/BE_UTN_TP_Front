@@ -193,6 +193,8 @@
 }
 
 .empty-message {
+    display: flex;
+    flex-direction: column;
     color: #6b7280;
     font-style: italic;
 }

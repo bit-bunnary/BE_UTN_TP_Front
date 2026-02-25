@@ -140,7 +140,10 @@ const HomeScreen = () => {
 
                                 {workspace_list.data.workspaces &&
                                     workspace_list.data.workspaces.length === 0 && (
-                                        <span className="empty-message">No tienes workspaces aún 💮</span>
+                                        <span className="empty-message">
+                                            No tienes workspaces aún
+                                            <img src="/computer.gif" alt="Pink computer 🖥"/>
+                                        </span>
                                     )}
                             </div>
                         </div>
