@@ -19,7 +19,7 @@ const InviteMemberScreen = () => {
         }
 
         try {
-            const res = await fetch(`http://localhost:8180/api/workspace/${workspaceId}/members`, {
+            const res = await fetch(`https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}/members`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
