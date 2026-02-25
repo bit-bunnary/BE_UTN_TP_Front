@@ -350,10 +350,12 @@
 
     .channels-container {
         width: 260px;
+        height: 780px;
     }
 
     .messages-container {
         padding: 32px;
+        height: 780px;
     }
 }
 
