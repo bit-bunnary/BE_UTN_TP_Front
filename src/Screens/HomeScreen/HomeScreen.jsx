@@ -37,7 +37,7 @@ const HomeScreen = () => {
 
         try {
             const res = await fetch(
-                `http://localhost:8180/api/workspace/${workspaceToDelete}`,
+                `https://be-utn-tp-back.vercel.app/api/workspace/${workspaceToDelete}`,
                 {
                     method: "DELETE",
                     headers: {

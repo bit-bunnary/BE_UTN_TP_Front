@@ -28,7 +28,7 @@ const WorkspaceScreen = () => {
 
     useEffect(() => {
         /* Me trae el nombre del workspace */
-        fetch(`http://localhost:8180/api/workspace/${workspaceId}`, {
+        fetch(`https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
             },
@@ -42,7 +42,7 @@ const WorkspaceScreen = () => {
 
     useEffect(() => {
         /* me trae los canales del workspace */
-        fetch(`http://localhost:8180/api/workspace/${workspaceId}/channels`, {
+        fetch(`https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}/channels`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
             },
@@ -67,7 +67,7 @@ const WorkspaceScreen = () => {
 
         /* me trae mensajes del canal seleccionado */
         fetch(
-            `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
+            `https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
             {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("auth_token")}`,
@@ -104,7 +104,7 @@ const WorkspaceScreen = () => {
 
         try {
             const res = await fetch(
-                `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
+                `https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages`,
                 {
                     method: "POST",
                     headers: {
@@ -146,7 +146,7 @@ const WorkspaceScreen = () => {
 
         try {
             const res = await fetch(
-                `http://localhost:8180/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages/${messageToDelete}`,
+                `https://be-utn-tp-back.vercel.app/api/workspace/${workspaceId}/channels/${selectedChannel._id}/messages/${messageToDelete}`,
                 {
                     method: "DELETE",
                     headers: {
