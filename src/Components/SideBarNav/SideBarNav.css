@@ -137,7 +137,7 @@
     .sidebar-nav__upper,
     .sidebar-nav__lower {
         flex-direction: row;
-        gap: 18px;
+        gap: 32px;
     }
 
     .sidebar-nav__button {
