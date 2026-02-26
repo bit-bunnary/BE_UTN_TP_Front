@@ -7,10 +7,12 @@ const InviteMemberScreen = () => {
     const navigate = useNavigate();
 
     const [email, setEmail] = useState("");
-    const [role, setRole] = useState("Member");
+    const [role, setRole] = useState("User");
     const [message, setMessage] = useState("");
 
-    const roles = ["Owner", "Admin", "Member"];
+    const roles = ["Owner", "Admin", "User"];
+
+    console.log(role);
 
     const handleInvite = async () => {
         if (!email.trim()) {
@@ -36,7 +38,7 @@ const InviteMemberScreen = () => {
 
             setMessage("Invitación enviada correctamente ✅");
             setEmail("");
-            setRole("Member");
+            setRole("User");
         } catch (error) {
             console.error(error);
             setMessage("Error enviando invitación");
@@ -74,7 +76,7 @@ const InviteMemberScreen = () => {
                                 onChange={(e) => setRole(e.target.value)}
                             >
                                 {roles.map((r) => (
-                                    <option key={r} value={r}>{r}</option>
+                                    <option key={r} value={r}>{r === "User" ? "Miembro" : r}</option>
                                 ))}
                             </select>
                         </div>

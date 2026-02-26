@@ -173,9 +173,20 @@
     position: relative;
 }
 
+.message-flex-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .message-user {
     font-weight: 600;
     color: #ec4899;
+}
+.message-time {
+    font-weight: 500;
+    font-size: 14px;
+    color: #9ca3af;
 }
 
 /* ===== INPUT PARA MENSAJITOS ===== */

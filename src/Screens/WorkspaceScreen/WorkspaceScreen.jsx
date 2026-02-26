@@ -5,6 +5,8 @@ import "./WorkspaceScreen.css"
 import { TbChevronDown, TbHash  } from "react-icons/tb";
 import { BsEnvelopeHeart , BsEnvelopeOpenHeart , BsPersonAdd } from "react-icons/bs";
 import LoaderEnvelope from "../../Components/LoaderEnvelope/LoaderEnvelope.jsx";
+import { format, formatDistanceToNow } from "date-fns";
+import {es} from "date-fns/locale";
 
 const WorkspaceScreen = () => {
     const { workspaceId } = useParams();
@@ -71,6 +73,7 @@ const WorkspaceScreen = () => {
             .then((res) => res.json())
             .then((data) => {
 
+            console.log(data);
             if (!data.ok) {
                 console.error("Error al traer mensajes:", data.message);
                 return;
@@ -219,9 +222,16 @@ const WorkspaceScreen = () => {
                                 messages.map((msg) => (
                                     <div key={msg._id} className="message-card">
                                         <div className="message-header">
-                                            <span className="message-user">
-                                                {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}:
-                                            </span>{" "}
+                                            <div className="message-flex-container">                                            
+                                                <span className="message-user">
+                                                    {msg.fk_workspace_member_id?.fk_id_user?.username || "Desconocido"}
+                                                </span>{" "}
+                                                {msg.created_at ? 
+                                                    <span className="message-time">
+                                                        {formatDistanceToNow(msg.created_at, {locale: es, addSuffix: true})}
+                                                    </span>
+                                                : "(╬▔皿▔)╯ N/A"}
+                                            </div>
 
                                             <div className="message-menu-container">
                                                 <button className="message-menu-btn" onClick={(e) => {
