@@ -96,6 +96,7 @@
     gap: 16px;
     flex-direction: row;
     align-items: center;
+    width: 450px;
 
     position: relative;
     z-index: 1;
@@ -211,11 +212,12 @@
     }
 
     .home-subtitle {
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .workspace-card {
         padding: 24px 32px;
+        width: 500px;
     }
 
     .workspace-avatar {
@@ -239,7 +241,7 @@
     }
 
     .home-subtitle {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .workspace-card {
@@ -258,11 +260,12 @@
     }
 
     .home-subtitle {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .workspace-card {
         padding: 16px 20px;
+        width: 400px;
     }
 
     .workspace-avatar {
@@ -295,7 +298,7 @@
     }
 
     .home-subtitle {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
     }
 
@@ -307,6 +310,7 @@
     .workspace-card {
         padding: 14px 16px;
         gap: 12px;
+        width: 300px;
     }
 
     .workspace-avatar {
@@ -337,7 +341,7 @@
     }
 
     .home-subtitle {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .workspace-scroll-container {

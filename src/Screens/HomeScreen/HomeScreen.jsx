@@ -5,11 +5,14 @@ import SidebarNav from "../../Components/SideBarNav/SideBarNav.jsx";
 import { useNavigate } from "react-router";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import LoaderBloomTalk from "../../Components/LoaderBloomTalk/LoaderBloomTalk.jsx";
+import { AuthContext } from "../../Context/AuthContext.jsx";
 
 const HomeScreen = () => {
     const { workspace_list_loading, workspace_list_error, workspace_list } =
         useContext(WorkspaceContext);
     console.log(workspace_list)
+
+    const { session } = useContext(AuthContext);
 
     const [openMenuWorkspaceId, setOpenMenuWorkspaceId] = useState(null)
     const [workspaceToDelete, setWorkspaceToDelete] = useState(null)
@@ -34,7 +37,7 @@ const HomeScreen = () => {
 
         try {
             const res = await fetch(
-                `https://be-utn-tp-back.vercel.app/api/workspace/${workspaceToDelete}`,
+                `http://localhost:8180/api/workspace/${workspaceToDelete}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -74,7 +77,7 @@ const HomeScreen = () => {
                     <div className="home-header">
                         <h1>
                             <img src="/pink-bow.gif" alt="Pink bow 🎀" className="pink-bow-gif"/>
-                            Bienvenido nuevamente
+                            Bienvenido {session.username}
                             <img src="/pink-bow.gif" alt="Pink bow 🎀" className="pink-bow-gif"/>
                         </h1>
                         <p className="home-subtitle">Elige un workspace para comenzar</p>
